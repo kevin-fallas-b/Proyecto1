@@ -12,4 +12,9 @@ Class Sitio_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_seccion($nombreseccion){
+        $query = $this->db->query("SELECT tbl_seccion.* from tbl_seccion WHERE tbl_seccion.nombre = '$nombreseccion'");
+        return $query->result_array();
+    }
+
 }

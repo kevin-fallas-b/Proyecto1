@@ -9,13 +9,18 @@
 
         //metodo que se ejecuta al ingresar a localhost/proyecto1
         public function index() {
-            $this->load->view('sitio/Inicio');
-            
+            $this->load->view('layout/main');
         }
 
 
         public function getSecciones(){
             return $this->Sitio_model->get_secciones();
+        }
+
+        public function goView($nombreseccion){
+            $seccion = $this->Sitio_model->get_seccion($nombreseccion);
+            array_push($seccion, $this->getSecciones());
+            $this->load->view('layout/main',$seccion);
         }
     }
 
