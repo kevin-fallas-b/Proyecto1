@@ -1,0 +1,23 @@
+#banner{
+    position: relative;
+    height: 150px;
+    width: 95%;
+}
+
+#contenedorbanner{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#contenedorsecciones{
+    position: relative;
+    width: 95%;
+    background-color: brown;
+    margin-left: 2.5%;
+    margin-top: 30px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
