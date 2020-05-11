@@ -16,17 +16,15 @@
     <div id='contenedorsecciones'>
         <?php 
             foreach($secciones as $s){
-                //echo form_open("Sitio/goView(".$s['nombre'].")");
-                echo "<form action='".base_url."'>";
-                echo "<input type='submit' class='linkseccion' >";
-                echo "</form>";
-               // echo form_close();1
-                
+                echo form_open('sitio/goview');
+                echo "<input type='submit' class='botonseccion' name='goview' value='".$s['nombre']."' >";
+                echo form_close();
             }
         ?>
     </div>
   	<div id="main_box">
-	   <!-- Aqui se debe cargar los detalles de cada pagina, la parte unica-->
+            <label id='labeltitulo'><?php echo $seccion['nombre']; ?></label>
+            <!-- Aqui se debe cargar los detalles de cada pagina, la parte unica-->
     </div> 
   </body>
 </html>

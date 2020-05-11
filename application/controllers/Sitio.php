@@ -1,6 +1,5 @@
 <?php
 
-    $url ='holaaaa';
     Class Sitio extends CI_Controller{
 
         public function __construct() {
@@ -10,7 +9,8 @@
 
         //metodo que se ejecuta al ingresar a localhost/proyecto1
         public function index() {
-            $this->goView("inicio");
+            $_POST['goview'] = 'inicio';
+            $this->goView();
         }
 
 
@@ -18,11 +18,13 @@
             return $this->Sitio_model->get_secciones();
         }
 
-        public function goView($nombreseccion){
-            $data['seccion'] = $this->Sitio_model->get_seccion($nombreseccion)[0];
+        public function goView(){
+            $data['seccion'] = $this->Sitio_model->get_seccion($this->input->post('goview'))[0];
             $data['secciones'] = $this->getSecciones();
             $this->load->view('layouts/main',$data);
         }
+
+        
     }
 
 ?>
