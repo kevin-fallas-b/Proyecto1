@@ -21,9 +21,21 @@
         public function goView(){
             $data['seccion'] = $this->Sitio_model->get_seccion($this->input->post('goview'))[0];
             $data['secciones'] = $this->getSecciones();
+            switch($data['seccion']['tipo']){
+                case 2:
+                    $data['fotos'] = $this->Sitio_model->get_fotos();
+                break;
+                case 3:
+                    $data['servicios'] = $this->Sitio_model->get_servicios();
+                break;
+            }
             $this->load->view('layouts/main',$data);
         }
 
+        //metodo para recuperar fotos de la galeria
+        public function recuperarfotos(){
+
+        }
         
     }
 

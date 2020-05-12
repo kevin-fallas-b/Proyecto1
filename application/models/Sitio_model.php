@@ -17,4 +17,16 @@ Class Sitio_model extends CI_Model {
         return $query->result_array();
     }
 
+    //metodo que recupera las imagenes que conforman la galeria
+    public function get_fotos(){
+        $query = $this->db->query("SELECT tbl_galeria.* from tbl_galeria");
+        return $query->result_array();
+    }
+    
+    //metodo que recupera los servicios que ofrece el sitio
+    public function get_servicios(){
+        $query = $this->db->query("SELECT tbl_servicio.* from tbl_servicio");
+        return $query->result_array();
+    }
+
 }
