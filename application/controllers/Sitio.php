@@ -32,11 +32,11 @@
             $this->load->view('layouts/main',$data);
         }
 
-        //metodo para recuperar fotos de la galeria
-        public function recuperarfotos(){
-
+        public function contacto(){
+            $this->Sitio_model->guardar_contacto($_POST['nombre'],$_POST['correo'],$_POST['comentario']);
+            $_POST['goview'] = 'inicio';
+            $this->goView();
         }
-        
     }
 
 ?>

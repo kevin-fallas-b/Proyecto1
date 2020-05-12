@@ -29,4 +29,8 @@ Class Sitio_model extends CI_Model {
         return $query->result_array();
     }
 
+    //metodo que guarda los comentarios que los usuarios le hagan al administrador del sitio
+    public function guardar_contacto($nombre,$correo,$comentario){
+        $query = $this->db->query("INSERT INTO `tbl_contacto`(`correo`, `nombre`, `descripcion`) VALUES ('$correo','$nombre','$comentario')");
+    }
 }

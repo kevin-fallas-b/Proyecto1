@@ -4,13 +4,17 @@
   	<link rel="icon" href="<?php echo base_url('resources/img/favicon.png');?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo base_url('resources/css/style.css');?>">
     <?php
-        //si es galeria meter css y js de galeria
+        //segun el tipo de contenido, incluir archivos css y JS especificos
+        //tenerlos en distintos archivos nos ayuda a que la pagina sea mas liviana y ordenada
         if($seccion['tipo']==2){
           echo "<link rel='stylesheet' href='".base_url('resources/css/galeria.css')."'>";
           echo "<script type='text/javascript' src='".base_url('resources/js/galeria.js')."')></script>";
         }else if($seccion['tipo']==3){
           echo "<link rel='stylesheet' href='".base_url('resources/css/servicios.css')."'>";
           echo "<script type='text/javascript' src='".base_url('resources/js/servicios.js')."')></script>";
+        }else if($seccion['tipo']==4){
+          echo "<link rel='stylesheet' href='".base_url('resources/css/contacto.css')."'>";
+          echo "<script type='text/javascript' src='".base_url('resources/js/contacto.js')."')></script>";
         }
      ?>
     <script type="text/javascript" src="<?php echo base_url('resources/js/axios.min.js');?>"></script>
@@ -51,6 +55,7 @@
                 break;
                 case 4:
                   //seccion de contacto
+                  include('contacto.php');
                 break;
               }
             ?>

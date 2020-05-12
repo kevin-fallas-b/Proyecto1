@@ -10,7 +10,6 @@
                 <div class='panel'>
                       ".$s['descripcion']."
                 </div>";
-
     }
     echo $datos;
 
