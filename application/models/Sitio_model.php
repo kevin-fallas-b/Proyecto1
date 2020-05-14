@@ -31,6 +31,23 @@ Class Sitio_model extends CI_Model {
 
     //metodo que guarda los comentarios que los usuarios le hagan al administrador del sitio
     public function guardar_contacto($nombre,$correo,$comentario){
+        //validar informacion antes de insertar a bd, aunque ya se reviso en front end tambien
+
         $query = $this->db->query("INSERT INTO `tbl_contacto`(`correo`, `nombre`, `descripcion`) VALUES ('$correo','$nombre','$comentario')");
+    }
+
+    //funcion mia para ver si es string, que no sobrepase un maxlength, y que no sea una inyeccion SQL
+    private function validarString($string,$maxlength){
+        $valido = true; //empezamos suponiendo que si es string valido
+
+        if(!is_string($string)){
+            return false;
+        }
+
+        if(strlen($string)>$maxlength){
+            return false;
+        }
+
+        
     }
 }

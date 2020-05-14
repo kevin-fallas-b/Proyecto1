@@ -30,7 +30,7 @@
     <div id='contenedorsecciones'>
         <?php 
             foreach($secciones as $s){
-                echo form_open('sitio/goview');
+                echo form_open($s["nombre"]);
                 echo "<input type='submit' class='botonseccion' name='goview' value='".$s['nombre']."' >";
                 echo form_close();
             }

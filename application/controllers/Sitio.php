@@ -13,12 +13,14 @@
             $this->goView();
         }
 
-
         public function getSecciones(){
             return $this->Sitio_model->get_secciones();
         }
 
         public function goView(){
+            if($this->input->post('goview')==null){
+                $_POST['goview'] = 'inicio';
+            }
             $data['seccion'] = $this->Sitio_model->get_seccion($this->input->post('goview'))[0];
             $data['secciones'] = $this->getSecciones();
             switch($data['seccion']['tipo']){
