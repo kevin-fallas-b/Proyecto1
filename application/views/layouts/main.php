@@ -2,7 +2,7 @@
 <html>
   <head>
   	<link rel="icon" href="<?php echo base_url('resources/img/favicon.png');?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo base_url('resources/css/style.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('resources/css/sitio.css');?>">
     <?php
         //segun el tipo de contenido, incluir archivos css y JS especificos
         //tenerlos en distintos archivos nos ayuda a que la pagina sea mas liviana y ordenada

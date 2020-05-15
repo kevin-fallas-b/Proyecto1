@@ -4,6 +4,7 @@
 
         public function __construct() {
             parent::__construct();
+            $this->load->model('Admin_model');
         }
 
         public function index(){
@@ -14,6 +15,10 @@
                 //usuario no autenticado, mandar a pagina de log in
                 redirect('admin');
             }
+        }
+
+        public function getusers(){
+            echo json_encode($this->Admin_model->get_users());
         }
     }
 ?>

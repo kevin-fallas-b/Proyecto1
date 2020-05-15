@@ -19,6 +19,11 @@
         <form action="dashboard" method="POST">
             <input type="submit" value="Agregar/editar usuarios" id="btneditarusuarios" name='tipo' class="btnlink">
         </form>
+
+        <form action="dashboard" method="POST">
+            <input type="submit" value="Ver comentarios" id="btnvercomentarios" name='tipo' class="btnlink">
+        </form>
+
         <form action="logout" method="POST">
             <input type="submit" value="Cerrar sesion" id='btncerrarsession' class="btnlink">
         </form>
@@ -34,6 +39,9 @@
             break;
                 case 'Agregar/editar usuarios': include('usuarios.php');
                 echo "<script> cambiarboton(btneditarusuarios); </script>";
+            break;
+            case 'Ver comentarios': include('usuarios.php');
+                echo "<script> cambiarboton(btnvercomentarios); </script>";
             break;
             }
         }else{
