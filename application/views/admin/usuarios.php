@@ -1,3 +1,3 @@
 <?php
-    echo 'holamundo'
+    echo 'editar usuarios'
 ?>

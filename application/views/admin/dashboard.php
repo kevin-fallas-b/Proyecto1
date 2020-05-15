@@ -36,6 +36,9 @@
                 echo "<script> cambiarboton(btneditarusuarios); </script>";
             break;
             }
+        }else{
+                include('secciones.php');
+                echo "<script> cambiarboton(btneditarsecciones); </script>";
         }
         ?>
         
