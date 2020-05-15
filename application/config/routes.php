@@ -51,7 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'sitio';
 $route['admin'] = 'auth';
-$route['login'] = 'auth/login'; 
+$route['login'] = 'auth/login';
+$route['logout'] = 'auth/logout'; 
 $route['dashboard'] = 'admin';
 $route['(:any)'] = 'sitio/goview';
 $route['404_override'] = '';

@@ -23,7 +23,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) { //Si No se cumple la validación
 
-            $this->load->view('auth/login');
+            $this->load->view('admin/login');
         } else {
 
             //Si se cumple la validación procedemos a comprobar la autenticación
@@ -43,12 +43,13 @@ class Auth extends CI_Controller
                 if ($result != false) {
                     $session_data = array(
                         'logged_in' => TRUE,
+                        'nombre' => $result[0]->nombrereal,
                     );
 
                     // Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
                     $this->session->set_userdata('logged_in', $session_data);
                     //Función propia para cargar la vista indicada con datos precargados
-                    redirect('dashboard', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+                    redirect('dashboard', 'refresh'); //redireccionamos a la URL del dashboard
 
                 }
             } else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
@@ -60,4 +61,21 @@ class Auth extends CI_Controller
             }
         }
     }
+
+
+    //Proceso de Logout 
+	public function logout() {
+
+		// Removemos los datos de la sesion
+		$sess_array = array(
+			'logged_in' => FALSE,
+			'username' => '',
+		);
+		$this->session->unset_userdata('logged_in', $sess_array);
+		$this->session->sess_destroy();
+		$data['message_display'] = 'Has cerrado tu sesión de forma exitosa.';
+		$this->load->view('admin/login', $data);
+	}
 }
+
+?>
