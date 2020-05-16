@@ -12,8 +12,11 @@
     margin-top: 10px;
 }
   
-.active, .accordion:hover {
+.accordion:hover {
 	background-color: rgb(17, 17, 17);
+}
+.active{
+  background-color: #00a1b3
 }
   
 .panel {

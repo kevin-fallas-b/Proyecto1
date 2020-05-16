@@ -1,0 +1,110 @@
+#contenedorseleccionusuario{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#usuarios{
+    border-radius: 4px;
+}
+
+#contenedorcamposusuario{
+    width: 90%;
+    position: absolute;
+    top:70px;
+    left: 15px;
+}
+
+#contenedorfotoeditando{
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    right: -60px;
+    top: -40px;
+    border: 1px solid #1DA1F2;
+}
+
+#btnfoto{
+    position: absolute;
+    width: 128px;
+    height: 20px;
+    border: 0px;
+    border-radius: 10px;
+    right: -60px;
+    top: 100px;
+    color: white;
+}
+
+#contenedorconfirmarcancelar{
+    position: absolute;
+    left: 35%;
+    bottom: -400px;
+}
+
+#btncancelarusuario{
+    background-color: #d62047;
+}
+
+#btncancelarusuario:hover{
+    background-color: #9c2841;
+}
+
+#btnguardar{
+    background-color: #00ba22;
+}
+
+#btnguardar:hover{
+    background-color: #007315;
+}
+
+.boton{
+    width: 150px;
+    height: 25px;
+    border-radius: 8px;
+    background-color: #1DA1F2;
+    border: 0px;
+    color: white;
+}
+
+.boton:hover{
+    background-color: #28709c;
+}
+
+.boton:disabled{
+    opacity: 0.5;
+}
+
+.campotexto{
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    margin-right: 100px;
+}
+
+#camposfila1{
+    position: absolute;
+    top: 100px;
+    left: 30px;
+}
+
+#camposfila3{
+    position: absolute;
+    top: 175px;
+    left: 30px;
+}
+#campousuario{
+    position: absolute;
+    top: 25px;
+    left: 30px;
+
+}
+.labelcampo{
+    font-size: 14px;
+    position: absolute;
+    top: -20px;
+}
+#labelusuario{
+    top:0px;
+    left: 30px;
+
+}
