@@ -1,0 +1,16 @@
+#contenedorseleccionseccion{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#secciones{
+    border-radius: 4px;
+}
+
+#contenedoreditor{
+    width: 90%;
+    position: absolute;
+    top:70px;
+    left: 15px;
+}

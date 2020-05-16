@@ -41,7 +41,7 @@
         public function subirfoto(){
             $config['upload_path']          = './resources/img/users';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 2000; //2MB
+            $config['max_size']             = 10000; //10MB
             $config['file_name']           = $this->input->post('enviarid');
             $config['overwrite']            = true;
             $this->load->library('upload', $config);
@@ -69,5 +69,8 @@
             redirect('dashboard','refresh');
         }
 
+        public function getsecciones(){
+            echo json_encode($this->Admin_model->get_secciones());
+        }
     }
 ?>

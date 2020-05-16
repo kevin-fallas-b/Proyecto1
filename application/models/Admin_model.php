@@ -31,4 +31,9 @@ class Admin_model extends CI_Model
         public function update_photo($id,$foto){
                 $query = $this->db->query("UPDATE `tbl_user` SET `foto`='$foto' WHERE `id`=$id");
         }
+
+        public function get_secciones(){
+                $query = $this->db->query("SELECT tbl_seccion.* from tbl_seccion ");
+                return $query->result_array();
+        }
 }
