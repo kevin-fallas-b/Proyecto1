@@ -42,7 +42,7 @@
                 case 'Agregar/editar usuarios': include('usuarios.php');
                 echo "<script> cambiarboton(btneditarusuarios); </script>";
             break;
-            case 'Ver comentarios': include('usuarios.php');
+            case 'Ver comentarios': include('comentarios.php');
                 echo "<script> cambiarboton(btnvercomentarios); </script>";
             break;
             }

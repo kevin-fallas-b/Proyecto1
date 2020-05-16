@@ -53,6 +53,7 @@ $route['default_controller'] = 'sitio';
 $route['admin'] = 'auth';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout'; 
+$route['enviarcomentario'] = 'sitio/contacto';
 $route['dashboard'] = 'admin';
 $route['(:any)'] = 'sitio/goview';
 $route['404_override'] = '';

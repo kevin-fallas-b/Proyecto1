@@ -22,4 +22,9 @@ class Admin_model extends CI_Model
         public function edit_user_samepass($id,$nombre,$correo,$usuario){
                 $query = $this->db->query("UPDATE `tbl_user` SET `usuario`='$usuario',`nombrereal`='$nombre',`correo`='$correo' WHERE `id`=$id");
         }
+
+        public function get_comments(){
+                $query = $this->db->query("SELECT tbl_contacto.* from tbl_contacto ");
+                return $query->result_array();
+        }
 }

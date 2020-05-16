@@ -53,6 +53,7 @@ html, body
 	border-radius: 5px;
     border: 1px solid #1DA1F2;
     height: 70%; 
+    overflow: auto;
 }
 
 .selected{

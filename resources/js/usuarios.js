@@ -1,3 +1,5 @@
+//archivo JS que se encarga de controlar la seccion de agregar/editar usuarios en la pagina del ADMIN
+
 window.addEventListener('load', inicial, false);
 
 var usuarios;

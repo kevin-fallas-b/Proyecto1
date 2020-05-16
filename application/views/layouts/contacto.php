@@ -3,7 +3,7 @@
 </div>
 
 <div id='contenedorformulario'>
-    <form method='post' action='contacto'>
+    <form method='post' action='enviarcomentario'>
         <input type="text" name="nombre" id="nombre" placeholder='Nombre' size='50' required>
         <input type="text" name="correo" id="correo" placeholder='Correo' size='50' required>
         <textarea name='comentario' placeholder="Comentario" size='1000' required></textarea>

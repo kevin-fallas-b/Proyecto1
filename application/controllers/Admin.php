@@ -33,5 +33,12 @@
 
             }
         }
+
+
+        public function getcomentarios(){
+            echo json_encode($this->Admin_model->get_comments());
+        }
+
+
     }
 ?>

@@ -1,6 +1,6 @@
+//JS general de la pagina del ADMIN
+
 window.addEventListener('load', inicial, false);
-
-
 
 function inicial() {
     alertify.set('notifier','position','top-right');

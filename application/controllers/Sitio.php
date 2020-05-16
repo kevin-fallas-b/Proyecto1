@@ -36,8 +36,7 @@
 
         public function contacto(){
             $this->Sitio_model->guardar_contacto($_POST['nombre'],$_POST['correo'],$_POST['comentario']);
-            $_POST['goview'] = 'inicio';
-            $this->goView();
+            redirect('', 'refresh');
         }
     }
 

@@ -1,0 +1,45 @@
+.accordion {
+	background-color: #00a1b3;
+	color: white;
+	cursor: pointer;
+	padding: 18px;
+    width: 98%;
+    margin-left: 1%;
+	text-align: left;
+    transition: 0.4s;
+    border: 1px solid white;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+  
+.active, .accordion:hover {
+	background-color: rgb(17, 17, 17);
+}
+  
+.panel {
+	padding: 0px;
+    background-color: white;
+    color: black;
+    max-height: 0;
+    width: 98%;
+    margin-left: 1%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    bottom: 10px;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.accordion:after {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	font-size: 13px;
+	color: rgb(77, 75, 75);
+	float: right;
+	margin-left: 5px;
+  }
+  
+  .active:after {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
