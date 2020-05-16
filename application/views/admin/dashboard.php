@@ -34,6 +34,9 @@
     <div id='contenedorprincipal'>
         <?php
         //aqui hacer un switch con lo que viene en post de pagina, como en el layout main
+        if($this->session->flashdata('tipo')){
+            $_POST['tipo'] = $this->session->flashdata('tipo');
+        }
         if( $this->input->post('tipo')){
             switch ($this->input->post('tipo')) {
                 case 'Editar secciones': include('secciones.php');

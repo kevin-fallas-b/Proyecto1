@@ -11,6 +11,8 @@ var editando;//bandera para saber si estoy editando o creando usuario nuevo. uti
 var idseleccionado;//usuario que estoy editando
 var cambiocontra;//bandera para cuando guardo
 var selectorusuarios;//selector de usuarios en pantalla
+var btncambiarfoto;//boton en si
+var escogerfoto;//filepicker
 
 function inicial() {
     btneditar = document.getElementById('btneditar');
@@ -29,11 +31,19 @@ function inicial() {
         selectorusuarios.setAttribute('disabled', true);
         btnnuevo.setAttribute('disabled', true);
     });
+
+    btncambiarfoto = document.getElementById('btnfoto');
+    escogerfoto = document.getElementById('escogerimagen');
+    escogerfoto.addEventListener('change',subirfoto,false);
+    btncambiarfoto.addEventListener('click',function(){
+        escogerfoto.click();
+    });
 }
 
 function getusuarios() {
     var opciones = document.getElementById('usuarios');
     var form = new FormData();
+    opciones.innerHTML ='';
     axios.post('admin/getusers', form)
         .then(function (response) {
             usuarios = response.data;
@@ -65,6 +75,9 @@ function editar() {
     document.getElementById('campocorreo').value = usuario['correo'];
     document.getElementById('campousuario').value = usuario['usuario'];
     document.getElementById('contenedorcamposusuario').removeAttribute('hidden');
+    document.getElementById('contenedorimagencontrol').removeAttribute('hidden');
+    //poner foto
+    document.getElementById('fotousuario').src=getbaseurl()+'/resources/img/users/'+usuario['foto'];
     btnnuevo.setAttribute('disabled', true);
     selectorusuarios.setAttribute('disabled', true);
     btneditar.setAttribute('disabled', true);
@@ -99,7 +112,6 @@ function guardar() {
             form.append('contra', contra);
 
         }
-        console.log(contra);
 
         axios.post(direccion, form)
             .then(function (response) {
@@ -109,6 +121,7 @@ function guardar() {
                     alertify.success("Usuario guardado exitosamente");
                 }
                 cancelarusuario();
+                getusuarios();
             })
             .catch(function (error) {
                 console.log('Error al guardar');
@@ -128,6 +141,8 @@ function cancelarusuario() {
     document.getElementById('campocontra').value = '';
     document.getElementById('campoconfirmarcontra').value = '';
     document.getElementById('contenedorcamposusuario').setAttribute('hidden', true);
+    document.getElementById('contenedorimagencontrol').setAttribute('hidden', true);
+
     btnnuevo.removeAttribute('disabled');
     btneditar.removeAttribute('disabled');
     selectorusuarios.removeAttribute('disabled');
@@ -165,4 +180,10 @@ function validarcampos() {
         }
     }
     return true;
+}
+
+
+function getbaseurl(){
+    var getUrl = window.location;
+    return  getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 }
