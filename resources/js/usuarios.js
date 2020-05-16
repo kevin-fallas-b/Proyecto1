@@ -42,8 +42,8 @@ function inicial() {
 
 function getusuarios() {
     var opciones = document.getElementById('usuarios');
+    opciones.innerHTML='';
     var form = new FormData();
-    opciones.innerHTML ='';
     axios.post('admin/getusers', form)
         .then(function (response) {
             usuarios = response.data;
@@ -182,6 +182,12 @@ function validarcampos() {
     return true;
 }
 
+//metodo que se ejecuta cuando hay change en el filepicker, si esta editando, enviar la foto al controlador para que la suba, si no, guardarla de momento
+function subirfoto(){
+  
+    document.getElementById('enviarid').value =idseleccionado;
+    document.getElementById('btnsubmit').click();
+}
 
 function getbaseurl(){
     var getUrl = window.location;
