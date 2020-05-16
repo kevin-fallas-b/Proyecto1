@@ -1,5 +1,5 @@
 
-<div id='contenedormensaje'>
+<div id='contenedormensajeservicio'>
     <label>Nuestra empresa ofrece distintos servicos para el publico en general. Estos son algunos de ellos.</label>
 </div>
 <br>

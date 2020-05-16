@@ -10,6 +10,7 @@
           echo "<link rel='stylesheet' href='".base_url('resources/css/galeria.css')."'>";
           echo "<script type='text/javascript' src='".base_url('resources/js/galeria.js')."')></script>";
         }else if($seccion['tipo']==3){
+          echo "<link rel='stylesheet' href='".base_url('resources/css/acordiones.css')."'>";
           echo "<link rel='stylesheet' href='".base_url('resources/css/servicios.css')."'>";
           echo "<script type='text/javascript' src='".base_url('resources/js/servicios.js')."')></script>";
         }else if($seccion['tipo']==4){

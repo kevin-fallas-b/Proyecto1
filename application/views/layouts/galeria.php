@@ -1,4 +1,5 @@
 <div id='contenedorgeneral'>
+    <label id='mensajebienvenido'>Te invitamos a disfrutar de nuestra galeria</label>
 <div id='contenedorfotos' style="width:50%">
     <?php 
         for($i =0; $i<count($fotos);$i++){
