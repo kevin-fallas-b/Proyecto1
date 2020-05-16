@@ -4,8 +4,10 @@
 <head>
     <link rel="icon" href="<?php echo base_url('resources/img/favicon.png'); ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo base_url('resources/css/dashboard.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('resources/css/alertify.min.css'); ?>">
     <script type='text/javascript' src="<?php echo base_url('resources/js/dashboard.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('resources/js/axios.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('resources/js/alertify.min.js'); ?>"></script>
     <title>Panel administracion</title>
 </head>
 
