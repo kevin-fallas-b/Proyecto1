@@ -53,4 +53,9 @@ class Admin_model extends CI_Model
         public function update_seccion($id,$titulo,$detalle){
                 $this->db->query("UPDATE `tbl_seccion` SET `nombre`='$titulo',`texto`='$detalle' WHERE `id`=$id");
         }
+
+        public function update_banner($id,$banner){
+                $this->db->query("UPDATE `tbl_seccion` SET `banner`='$banner' WHERE `id`=$id");
+        }
+
 }

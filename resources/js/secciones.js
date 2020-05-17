@@ -88,8 +88,6 @@ function editar() {
 
         });
 
-    //ya cargue plantilla, llenar datos basicos
-
 }
 
 function setdatos() {
@@ -171,4 +169,9 @@ function eliminarseccion() {
 
             });
     }, '');
+}
+
+function subirbanner(){
+    document.getElementById('enviarid').value =idseleccionado;
+    document.getElementById('btnsubmit').click();
 }

@@ -18,7 +18,7 @@
             <img id="fotousuario" src="<?php echo base_url('resources/img/users/unknown.png'); ?>" alt="">
         </div>
 
-        <?php echo form_open_multipart('admin/subirfoto/'); ?>
+        <?php echo form_open_multipart('admin/subirfoto'); ?>
         <input type="file" name="txt_file" size="20" class="btn btn-info" id="escogerimagen" hidden accept="image/jpeg,image/gif,image/png" />
         <input type="text" name='enviarid' hidden id="enviarid" value="">
         <button type="button" class="boton" id="btnfoto">Cambiar Foto</button>

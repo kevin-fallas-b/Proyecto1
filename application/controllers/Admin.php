@@ -101,5 +101,36 @@
         public function editarsec(){
             $this->Admin_model->update_seccion($this->input->post('id'),$this->input->post('titulo'),$this->input->post('detalle'));
         }
+
+        public function subirbanner(){
+            $config['upload_path']          = './resources/img/banners';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 10000; //10MB
+            $config['file_name']           = $this->input->post('enviarid');
+            $config['overwrite']            = true;
+            $this->load->library('upload', $config);
+
+            
+            if ( ! $this->upload->do_upload('txt_file'))
+            {
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata('error', $error['error']);
+                echo $error['error'];
+            }
+            else
+            {
+                $data = array('upload_data' => $this->upload->data());
+                $params = array(
+                    'photo' => $this->upload->data('file_name'),
+                );
+
+                $this->Admin_model->update_banner($this->input->post('enviarid'),$this->upload->data('file_name'));
+
+                //$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+            }
+            
+            $this->session->set_flashdata('tipo','Editar secciones');
+            redirect('dashboard','refresh');
+        }
     }
 ?>
