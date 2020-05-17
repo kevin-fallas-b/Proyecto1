@@ -66,12 +66,9 @@ function editar() {
     //agarrar elemento seleccionado por usuario
     var lista = document.getElementById('secciones');
     idseleccionado = lista.options[lista.selectedIndex].value;
-    console.log(idseleccionado+' id seleccionado');
     for (var i = 0; i < seccionesregistradas.length; i++) {
         if (seccionesregistradas[i]['id'] == idseleccionado) {
             seccionseleccionada = seccionesregistradas[i];
-            console.log('se encontro seccion');
-            console.log(JSON.stringify(seccionseleccionada));
             break;
         }
     }

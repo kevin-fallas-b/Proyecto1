@@ -89,7 +89,9 @@ class Admin extends CI_Controller
                 break;
             case 2:
                 //galeria
-                echo 'editando galeria';
+                $devolver = $devolver . json_encode($this->load->view('admin/subsecciones/galeria
+                '));
+                echo $devolver;
                 break;
             case  3:
                 //servicios
