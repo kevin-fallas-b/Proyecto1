@@ -30,3 +30,8 @@ function stringvalido(revisar, tamanomax) {
     }
     return true;
 }
+
+function getbaseurl(){
+    var getUrl = window.location;
+    return  getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+}

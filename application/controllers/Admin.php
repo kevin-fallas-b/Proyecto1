@@ -75,23 +75,24 @@
 
         public function getsec(){
             switch($this->input->post('tipo')){
-                case 'nueva' || '1':
-                    echo  json_encode($this->load->view('admin/subsecciones/nueva'));
-                    //leer php de nuevo y mandarlo para atras
+                case 1 || 4:
+                    echo json_encode($this->load->view('admin/subsecciones/nueva'));
                 break;
-                case '2':
+                case 2:
                     //galeria
+                    echo 'editando galeria';
                 break;
-                case '3':
+                case  3:
                     //servicios
+                    echo 'editando servicios';
                 break;
-                case '4':
-                    //contacto
+               
             }
         }
 
         public function secnueva(){
             $this->Admin_model->set_seccion($this->input->post('titulo'),$this->input->post('detalle'));
         }
+        
     }
 ?>

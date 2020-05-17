@@ -1,7 +1,7 @@
 <div id="fila1">
         <input type="file" value="banner" id='escogerbanner' hidden>
         <input type="button" id="btnbanner" value="Escoger Banner" class="boton" onclick='clickbanner()'>
-        <img src="" alt="" id="bannerasubir" >
+        <img src="" alt="" id="bannerasubir" hidden>
     </div>
     <div id="fila2">
         <label for="campotitulo" class="labelcampo">Titulo</label>
@@ -12,6 +12,7 @@
         <textarea name="" id="campodetalle" cols="30" rows="10" placeholder="Detalle de sitio" class="campotexto"></textarea>
         <label for="" id="lblayuda">Este apartado soporta etiquetas HTML!<br>Usalas para acomodar de mejor manera tu contenido.</label>
         <a href="https://www.w3schools.com/TAGS/default.ASP" id="linkayuda" target="_blank">Click aqui para mas informacion.</a>
+        <input type="button" id='eliminarseccion' onclick="eliminarseccion()" value='Eliminar Seccion' class="boton" hidden>
     </div>
     <div id="contenedorconfirmarcancelar">
         <input type="button" value="Cancelar" id="btncancelarusuario" class="boton" onclick="cancelarseccion()">

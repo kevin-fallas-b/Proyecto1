@@ -11,6 +11,7 @@ var btnbanner;// btn mostrado al usuario, se encarga de abrir el file picker
 var escogerbanner;//filepicker
 var editando;//bandera que me ayuda a guardar
 
+
 function inicial() {
     btneditar = document.getElementById('btneditar');
     btnnuevo = document.getElementById('btnnuevo');
@@ -48,7 +49,7 @@ function seccionnueva() {
     para mas facil, hacer en el controller un metodo que me retorne el view adecuado y asi uso axios para pedirle al controller el php
     */
     var form = new FormData();
-    form.append('tipo', 'nueva');
+    form.append('tipo', 1);
     axios.post('admin/getsec', form)
         .then(function (response) {
             contenedoreditor.innerHTML += response.data;
@@ -71,16 +72,28 @@ function editar() {
     btneditar.setAttribute('disabled', true);
     btnnuevo.setAttribute('disabled', true);
     opciones.setAttribute('disabled', true);
+    
 
     var form = new FormData();
-    form.append('tipo', '"' + seccionseleccionada['tipo'] + '"');
-    form.append('id', idseleccionado);
+    form.append('tipo', seccionseleccionada['tipo']);
     axios.post('admin/getsec', form)
         .then(function (response) {
             contenedoreditor.innerHTML += response.data;
+            editando = true;
+            setdatos();
         }).catch(function (error) {
 
         });
+
+    //ya cargue plantilla, llenar datos basicos
+    
+}
+
+function setdatos() {
+    document.getElementById('campotitulo').value = seccionseleccionada['nombre'];
+    document.getElementById('campodetalle').value = seccionseleccionada['texto'];
+    document.getElementById('bannerasubir').src = getbaseurl()+'/resources/img/banners/'+seccionseleccionada['banner'];
+    document.getElementById('bannerasubir').removeAttribute('hidden');
 }
 
 function guardar() {
@@ -99,6 +112,7 @@ function guardar() {
                 .then(function (response) {
                     alertify.success('Seccion Guardada correctamente');
                     cancelarseccion();
+                    getsecciones();
                 }).catch(function (error) {
 
                 });
@@ -111,15 +125,19 @@ function guardar() {
 
 //como cargamos dinamicamente, debo crear muchas funciones asi para meterlo desde HTML
 function clickbanner() {
-    escogerbanner = document.getElementById('escogerbanner');
-    escogerbanner.click();
+    if (editando) {
+        escogerbanner = document.getElementById('escogerbanner');
+        escogerbanner.click();
+    } else {
+        //esta creando, aun no puede subir banner
+        alertify.error('Para seleccionar un banner. Guarde la seccion luego modifiquela.')
+    }
 }
 
-function cancelarseccion(){
+function cancelarseccion() {
     editando = false;
     contenedoreditor.innerHTML = '';
     btneditar.removeAttribute('disabled');
     btnnuevo.removeAttribute('disabled');
     opciones.removeAttribute('disabled');
-
 }
