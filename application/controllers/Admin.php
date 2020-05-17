@@ -89,5 +89,9 @@
                     //contacto
             }
         }
+
+        public function secnueva(){
+            $this->Admin_model->set_seccion($this->input->post('titulo'),$this->input->post('detalle'));
+        }
     }
 ?>

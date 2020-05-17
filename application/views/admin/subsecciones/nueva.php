@@ -1,6 +1,6 @@
 <div id="fila1">
         <input type="file" value="banner" id='escogerbanner' hidden>
-        <input type="button" id="btnbanner" value="Escoger Banner" class="boton">
+        <input type="button" id="btnbanner" value="Escoger Banner" class="boton" onclick='clickbanner()'>
         <img src="" alt="" id="bannerasubir" >
     </div>
     <div id="fila2">
@@ -14,6 +14,6 @@
         <a href="https://www.w3schools.com/TAGS/default.ASP" id="linkayuda" target="_blank">Click aqui para mas informacion.</a>
     </div>
     <div id="contenedorconfirmarcancelar">
-        <input type="button" value="Cancelar" id="btncancelarusuario" class="boton" onclick="cancelar()">
+        <input type="button" value="Cancelar" id="btncancelarusuario" class="boton" onclick="cancelarseccion()">
         <input type="button" value="Guardar" id="btnguardar" class="boton" onclick="guardar()">
     </div>

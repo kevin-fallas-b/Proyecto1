@@ -36,4 +36,9 @@ class Admin_model extends CI_Model
                 $query = $this->db->query("SELECT tbl_seccion.* from tbl_seccion ");
                 return $query->result_array();
         }
+
+        public function set_seccion($titulo,$detalle){
+                $query = $this->db->query("INSERT INTO `tbl_seccion`(`nombre`,`banner`, `texto`, `tipo`) VALUES ('$titulo','unknown.png','$detalle',1)");
+
+        }
 }
