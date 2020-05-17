@@ -72,7 +72,7 @@ function editar() {
     btneditar.setAttribute('disabled', true);
     btnnuevo.setAttribute('disabled', true);
     opciones.setAttribute('disabled', true);
-    
+
 
     var form = new FormData();
     form.append('tipo', seccionseleccionada['tipo']);
@@ -81,44 +81,59 @@ function editar() {
             contenedoreditor.innerHTML += response.data;
             editando = true;
             setdatos();
+            if (seccionseleccionada['tipo'] == 1 && idseleccionado > 5) {
+                document.getElementById('eliminarseccion').removeAttribute('hidden');
+            }
         }).catch(function (error) {
 
         });
 
     //ya cargue plantilla, llenar datos basicos
-    
+
 }
 
 function setdatos() {
     document.getElementById('campotitulo').value = seccionseleccionada['nombre'];
     document.getElementById('campodetalle').value = seccionseleccionada['texto'];
-    document.getElementById('bannerasubir').src = getbaseurl()+'/resources/img/banners/'+seccionseleccionada['banner'];
+    document.getElementById('bannerasubir').src = getbaseurl() + '/resources/img/banners/' + seccionseleccionada['banner'];
     document.getElementById('bannerasubir').removeAttribute('hidden');
 }
 
 function guardar() {
-    if (!editando) {
-        //guardar nuevo
-        //primero validar campos, no sobrepasan limites de BD
-        var titulo = document.getElementById('campotitulo').value;
-        var detalle = document.getElementById('campodetalle').value;
-
+    var titulo = document.getElementById('campotitulo').value;
+    var detalle = document.getElementById('campodetalle').value;
+    if (stringvalido(titulo, 50) && stringvalido(detalle, 3000)) {
+        //campos buenos, ver si estoy editando o creando uno nuevo
         var form = new FormData();
-        if (stringvalido(titulo, 50) && stringvalido(detalle, 3000)) {
+        form.append('titulo', titulo);
+        form.append('detalle', detalle);
+
+        if (!editando) {
+            //guardar nuevo
             //todo bien, hacer post a guardar
-            form.append('titulo', titulo);
-            form.append('detalle', detalle);
             axios.post('admin/secnueva', form)
                 .then(function (response) {
-                    alertify.success('Seccion Guardada correctamente');
+                    alertify.success('Seccion guardada correctamente');
                     cancelarseccion();
                     getsecciones();
                 }).catch(function (error) {
 
                 });
         } else {
-            alertify.error('Por favor revise los campos.');
+            //estoy editando
+            form.append('id', idseleccionado);
+            axios.post('admin/editarsec', form)
+                .then(function (response) {
+                    alertify.success('Seccion editada correctamente');
+                    cancelarseccion();
+                    getsecciones();
+                }).catch(function (error) {
+
+                });
         }
+    } else {
+        //campos invalidos
+        alertify.error('por favor revise los campos');
     }
 
 }
@@ -140,4 +155,20 @@ function cancelarseccion() {
     btneditar.removeAttribute('disabled');
     btnnuevo.removeAttribute('disabled');
     opciones.removeAttribute('disabled');
+}
+
+function eliminarseccion() {
+    alertify.confirm('Eliminar Seccion', '¿Esta seguro que desea eliminar esta seccion? Esto no se puede deshacer.', function () {
+        //hacer post a eliminar
+        var form = new FormData();
+        form.append('id', idseleccionado);
+        axios.post('admin/eliminarsec', form)
+            .then(function (response) {
+                alertify.success('Seccion eliminada correctamente');
+                cancelarseccion();
+                getsecciones();
+            }).catch(function (error) {
+
+            });
+    }, '');
 }

@@ -93,6 +93,13 @@
         public function secnueva(){
             $this->Admin_model->set_seccion($this->input->post('titulo'),$this->input->post('detalle'));
         }
-        
+
+        public function eliminarsec(){
+            $this->Admin_model->delete_seccion($this->input->post('id'));
+        }
+
+        public function editarsec(){
+            $this->Admin_model->update_seccion($this->input->post('id'),$this->input->post('titulo'),$this->input->post('detalle'));
+        }
     }
 ?>
