@@ -72,5 +72,22 @@
         public function getsecciones(){
             echo json_encode($this->Admin_model->get_secciones());
         }
+
+        public function getsec(){
+            switch($this->input->post('tipo')){
+                case 'nueva' || '1':
+                    echo  json_encode($this->load->view('admin/subsecciones/nueva'));
+                    //leer php de nuevo y mandarlo para atras
+                break;
+                case '2':
+                    //galeria
+                break;
+                case '3':
+                    //servicios
+                break;
+                case '4':
+                    //contacto
+            }
+        }
     }
 ?>

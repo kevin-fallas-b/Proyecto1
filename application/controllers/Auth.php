@@ -44,6 +44,7 @@ class Auth extends CI_Controller
                     $session_data = array(
                         'logged_in' => TRUE,
                         'nombre' => $result[0]->nombrereal,
+                        'foto' => $result[0]->foto,
                     );
 
                     // Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in

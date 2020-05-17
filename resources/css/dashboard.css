@@ -10,8 +10,17 @@ html, body
 
 #mensajebienvenido{
     position: absolute;
+    top: 20px;
+    right: 100px;
+}
+#fotousuariologin{
+    position: absolute;
     top: 10px;
     right: 20px;
+    border-radius: 35px;
+    height: 65px;
+    width: 65px;
+    border: 2px solid #1DA1F2;
 }
 
 #contenedorlinks{
@@ -82,4 +91,32 @@ html, body
     height: 25px;
     border-radius: 5px;
     margin-right: 100px;
+}
+.labelcampo{
+    font-size: 14px;
+    position: absolute;
+    top: -20px;
+}
+
+
+#contenedorconfirmarcancelar{
+    position: absolute;
+    left: 35%;
+    bottom: -400px;
+}
+
+#btncancelarusuario{
+    background-color: #d62047;
+}
+
+#btncancelarusuario:hover{
+    background-color: #9c2841;
+}
+
+#btnguardar{
+    background-color: #00ba22;
+}
+
+#btnguardar:hover{
+    background-color: #007315;
 }

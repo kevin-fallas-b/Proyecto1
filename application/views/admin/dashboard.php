@@ -12,6 +12,7 @@
 </head>
 
 <body id="main_page">
+    <img src="<?php echo base_url('resources/img/users/') . $this->session->userdata['logged_in']['foto'] ?>" alt="Foto de usuario" id='fotousuariologin'>
     <label id='mensajebienvenido'>Bienvenido <?php echo $this->session->userdata['logged_in']['nombre'] ?>!</label>
     <div id='contenedorlinks'>
         <form action="dashboard" method="POST">
@@ -34,27 +35,30 @@
     <div id='contenedorprincipal'>
         <?php
         //aqui hacer un switch con lo que viene en post de pagina, como en el layout main
-        if($this->session->flashdata('tipo')){
+        if ($this->session->flashdata('tipo')) {
             $_POST['tipo'] = $this->session->flashdata('tipo');
         }
-        if( $this->input->post('tipo')){
+        if ($this->input->post('tipo')) {
             switch ($this->input->post('tipo')) {
-                case 'Editar secciones': include('secciones.php');
-                echo "<script> cambiarboton(btneditarsecciones); </script>";
-            break;
-                case 'Agregar/editar usuarios': include('usuarios.php');
-                echo "<script> cambiarboton(btneditarusuarios); </script>";
-            break;
-            case 'Ver comentarios': include('comentarios.php');
-                echo "<script> cambiarboton(btnvercomentarios); </script>";
-            break;
+                case 'Editar secciones':
+                    include('secciones.php');
+                    echo "<script> cambiarboton(btneditarsecciones); </script>";
+                    break;
+                case 'Agregar/editar usuarios':
+                    include('usuarios.php');
+                    echo "<script> cambiarboton(btneditarusuarios); </script>";
+                    break;
+                case 'Ver comentarios':
+                    include('comentarios.php');
+                    echo "<script> cambiarboton(btnvercomentarios); </script>";
+                    break;
             }
-        }else{
-                include('secciones.php');
-                echo "<script> cambiarboton(btneditarsecciones); </script>";
+        } else {
+            include('secciones.php');
+            echo "<script> cambiarboton(btneditarsecciones); </script>";
         }
         ?>
-        
+
     </div>
 </body>
 

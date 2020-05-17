@@ -12,9 +12,6 @@
     <input type="button" value="Crear seccion nueva" id="btnnuevo" class="boton">
 </div>
 
-<div id="contenedoreditor" >
-    <input type="file" value="banner">
-    <label for="campotitulo">Titulo</label>
-    <input type="text" placeholder="Titulo" id="campotitulo">
-    <textarea name="" id="" cols="30" rows="10" placeholder="Detalle de sitio"></textarea>
+<div id="contenedoreditor">
+    
 </div>

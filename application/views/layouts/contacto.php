@@ -1,5 +1,5 @@
 <div id='contenedormensajecontacto'>
-    <label>Para nosotros es importante la opinion de nuestros clientes. A continuacion dejamos un formulario de contacto.</label>
+    <label><?php echo $seccion['texto']?></label>
 </div>
 
 <div id='contenedorformulario'>

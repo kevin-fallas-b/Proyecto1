@@ -1,6 +1,6 @@
 
 <div id='contenedormensajeservicio'>
-    <label>Nuestra empresa ofrece distintos servicos para el publico en general. Estos son algunos de ellos.</label>
+    <label><?php echo $seccion['texto']?></label>
 </div>
 <br>
 <?php

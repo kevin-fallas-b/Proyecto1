@@ -2,7 +2,7 @@
 
 window.addEventListener('load', inicial, false);
 
-var usuarios;
+var usuarios; //contiene todos los usuarios recuperados de BD
 var btneditar;
 var btnnuevo;
 var btnguardar;
@@ -177,6 +177,26 @@ function validarcampos() {
         if (!(stringvalido(contra, 128) && stringvalido(confirmarcontra, 128) && contra === confirmarcontra)) {
             alertify.error("Por favor revise los campos de contraseña.");
             return false;
+        }
+    }
+    for(var i=0;i<usuarios.length;i++){
+        if(usuario.toUpperCase() == usuarios[i]['usuario'].toUpperCase()){
+            //nombre de usuario ya existe, revisar si no es que me estoy editando yo mismo
+            if(editando && idseleccionado === usuarios[i]['id']){
+                // no pasa nada oigame
+            }else{
+                alertify.error("Nombre de usuario ya registrado.");
+                return false;
+            }
+        }
+        if(correo.toUpperCase() == usuarios[i]['correo'].toUpperCase()){
+            //Correo ya existe, revisar si no es que me estoy editando yo mismo
+            if(editando && idseleccionado === usuarios[i]['id']){
+                // no pasa nada oigame
+            }else{
+                alertify.error("Correo ya registrado.");
+                return false;
+            }
         }
     }
     return true;
