@@ -9,7 +9,7 @@
 
         //metodo que se ejecuta al ingresar a localhost/proyecto1
         public function index() {
-            $_POST['goview'] = 'inicio';
+            $_POST['goview'] = $this->Sitio_model->get_secciones()[0]['nombre'];
             $this->goView();
         }
 
@@ -19,7 +19,7 @@
 
         public function goView(){
             if($this->input->post('goview')==null){
-                $_POST['goview'] = 'inicio';
+                $_POST['goview'] =  $this->Sitio_model->get_secciones()[0]['nombre'];
             }
             $data['seccion'] = $this->Sitio_model->get_seccion($this->input->post('goview'))[0];
             $data['secciones'] = $this->getSecciones();

@@ -1,0 +1,61 @@
+#mensajemantservicios{
+    position: absolute;
+    left: 45%;
+    top: 350px;
+}
+
+#contenedoreditarservicios{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+}
+#mantserviciosfila1{
+    position: absolute;
+    top: 40px;
+}
+#mantserviciosfila2{
+    position: absolute;
+    top: 100px;
+}
+
+#btncancelarservicio{
+    background-color: #d62047;
+}
+
+#btncancelarservicio:hover{
+    background-color: #9c2841;
+}
+
+#btnguardarservicio{
+    background-color: #00ba22;
+}
+
+#btnguardarservicio:hover{
+    background-color: #007315;
+}
+#contenedoracordiones{
+    position: absolute;
+    top: 150px;
+    width: 100%;
+}
+
+.desabilitado{
+    pointer-events: none;
+	opacity: 0.4;
+	border: 1px solid #999999;
+  	background-color: #cccccc;
+	color: #666666;
+}
+
+.btneditarservicio{
+    height: 20px;
+}
+
+.btneliminarservicio{
+    height: 20px;
+    background-color: #d62047;
+}
+.btneliminarservicio:hover{
+    background-color: #9c2841;
+}

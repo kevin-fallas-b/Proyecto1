@@ -101,8 +101,10 @@ html, body
 
 #contenedorconfirmarcancelar{
     position: absolute;
-    left: 35%;
-    bottom: -400px;
+    /*left: 35%;
+    bottom: -400px;*/
+    right: 1%;
+    bottom: 30px;
 }
 
 #btncancelarusuario{

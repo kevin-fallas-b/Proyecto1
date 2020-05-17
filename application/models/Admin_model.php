@@ -58,4 +58,16 @@ class Admin_model extends CI_Model
                 $this->db->query("UPDATE `tbl_seccion` SET `banner`='$banner' WHERE `id`=$id");
         }
 
+        public function create_servicio($nombre,$desccorta,$desc){
+                $this->db->query("INSERT INTO `tbl_servicio`(`nombre`,`descripcion`, `descripcioncorta`) VALUES ('$nombre','$desc','$desccorta')");
+        }
+
+        public function update_servicio($id,$nombre,$desccorta,$desc){
+                $this->db->query("UPDATE `tbl_servicio` SET `nombre`='$nombre',`descripcion`='$desc',`descripcioncorta`='$desccorta' WHERE `id`=$id");
+        }
+
+        public function delete_servicio($id){
+                $this->db->query("DELETE FROM `tbl_servicio` WHERE `id` = $id");
+        }
+
 }

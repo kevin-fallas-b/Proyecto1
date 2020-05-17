@@ -1,6 +1,4 @@
 <div id="fila1">
-
-
     <?php echo form_open_multipart('admin/subirbanner'); ?>
     <input type="file" name="txt_file" size="20" class="btn btn-info" id="escogerbanner" onchange="subirbanner()" hidden accept="image/jpeg,image/gif,image/png" />
     <input type="text" name='enviarid' hidden id="enviarid" value="">

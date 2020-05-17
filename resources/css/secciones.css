@@ -13,6 +13,8 @@
     position: absolute;
     top:70px;
     left: 35px;
+    height: auto;
+    margin-bottom: 40px;
 }
 
 #campodetalle{
@@ -50,9 +52,9 @@
 #bannerasubir{
     position: absolute;
     left: 300px;
-    top: -20px;
+    top: -30px;
     border: 1px solid #1DA1F2;
-    width: 300px;
+    width: 600px;
     height: 80px;
 }
 
@@ -65,4 +67,13 @@
 
 #eliminarseccion:hover{
     background-color: #9c2841;
+}
+
+#contenedoreditarservicios{
+    position: absolute;
+    top: 350px;
+    height: 400px;
+    width: 100%;
+    bottom: 40px;
+    border-radius: 15px;
 }

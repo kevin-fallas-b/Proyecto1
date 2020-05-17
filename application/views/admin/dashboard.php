@@ -57,8 +57,10 @@
             include('secciones.php');
             echo "<script> cambiarboton(btneditarsecciones); </script>";
         }
+
         ?>
 
+        
     </div>
 </body>
 
