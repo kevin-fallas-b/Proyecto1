@@ -71,6 +71,7 @@ function editar() {
         if (seccionesregistradas[i]['id'] == idseleccionado) {
             seccionseleccionada = seccionesregistradas[i];
             console.log('se encontro seccion');
+            console.log(JSON.stringify(seccionseleccionada));
             break;
         }
     }

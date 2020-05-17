@@ -97,8 +97,9 @@ class Admin extends CI_Controller
                 echo $devolver;
                 break;
             case 4:
-                echo json_encode($this->load->view('admin/subsecciones/nueva'));
+                echo $devolver;
                 break;
+
         }
     }
 
