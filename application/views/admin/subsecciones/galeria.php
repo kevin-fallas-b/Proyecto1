@@ -1,3 +1,2 @@
-<div>
-    Aqui se escribe edicion de galeria
-</div>
+<label id='asd'>Servicios</label>
+

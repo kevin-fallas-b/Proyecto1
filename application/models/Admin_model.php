@@ -70,4 +70,15 @@ class Admin_model extends CI_Model
                 $this->db->query("DELETE FROM `tbl_servicio` WHERE `id` = $id");
         }
 
+        public function create_imagen($nombre,$descripcion){
+                $this->db->query("INSERT INTO `tbl_galeria`(`nombre`,`descripcion`) VALUES ('$nombre','$descripcion')");
+        }
+
+        public function update_imagen($id,$nombre,$descripcion){
+                $this->db->query("UPDATE `tbl_galeria` SET `nombre`='$nombre',`descripcion`='$descripcion' WHERE `id`=$id");
+        }
+
+        public function delete_imagen($id){
+                $this->db->query("DELETE FROM `tbl_galeria` WHERE `id` = $id");
+        }
 }
