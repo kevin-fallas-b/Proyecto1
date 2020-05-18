@@ -81,4 +81,9 @@ class Admin_model extends CI_Model
         public function delete_imagen($id){
                 $this->db->query("DELETE FROM `tbl_galeria` WHERE `id` = $id");
         }
+
+        public function count_imagen(){
+                $query = $this->db->query("SELECT COUNT(tbl_galeria.id) as cantidad FROM `tbl_galeria`");
+                return $query->result_array();
+        }
 }

@@ -25,7 +25,7 @@ function inicial() {
 
     btnnuevo.addEventListener('click', seccionnueva);
     btneditar.addEventListener('click', editar);
-
+    
 }
 
 function getsecciones() {
@@ -301,4 +301,15 @@ function eliminarservicio(id){
 
             });
     }, '');
+}
+
+function contarimagenesenbd(){
+    var form = new FormData();
+    console.log('buscando imagenes');
+    axios.post('admin/countimagen', form)
+        .then(function (response) {
+            console.log(response.data)
+        }).catch(function (error) {
+
+        });
 }

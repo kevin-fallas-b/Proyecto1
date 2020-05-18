@@ -89,8 +89,7 @@ class Admin extends CI_Controller
                 break;
             case 2:
                 //galeria
-                $devolver = $devolver . json_encode($this->load->view('admin/subsecciones/galeria
-                '));
+                $devolver = $devolver . json_encode($this->load->view('admin/subsecciones/galeria'));
                 echo $devolver;
                 break;
             case  3:
@@ -167,5 +166,9 @@ class Admin extends CI_Controller
     public function eliminarservicio(){
         $this->Admin_model->delete_servicio($this->input->post('id'));
 
+    }
+
+    public function countimagen(){
+        echo json_encode($this->Admin_model->count_imagen()[0]['cantidad']);
     }
 }
