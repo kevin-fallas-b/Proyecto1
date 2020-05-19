@@ -16,6 +16,11 @@ var servicios;//todos los servicios en BD
 var editandoservicio = false;//bandera para la hora de guardar, especifico de servicios
 var idservicioseleccionado; //id del servicio qu estyo editando
 
+//parte para galeria
+var escogerimagen;
+var editandoimagen = false;
+var idimagenseleccionado;
+
 function inicial() {
     btneditar = document.getElementById('btneditar');
     btnnuevo = document.getElementById('btnnuevo');
@@ -312,4 +317,27 @@ function contarimagenesenbd(){
         }).catch(function (error) {
 
         });
+}
+
+function clickimagen() {
+    escogerimagen = document.getElementById('escogerimagen');
+    escogerimagen.click();
+}
+
+function cancelarimagen(){
+    editandoimagen = false;
+    document.getElementById('descimagen').value = '';
+
+}
+
+function agregarimagen(){
+    document.getElementById('enviarid').value = idimagenseleccionado;
+
+    document.getElementById('btnsubmit').click();
+    console.log(nombre);
+    //var descripcion = document.getElementById(('descimagen'));
+}
+
+function eliminarimagen(){
+
 }

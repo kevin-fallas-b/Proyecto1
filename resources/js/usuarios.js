@@ -204,7 +204,6 @@ function validarcampos() {
 
 //metodo que se ejecuta cuando hay change en el filepicker, si esta editando, enviar la foto al controlador para que la suba, si no, guardarla de momento
 function subirfoto(){
-  
     document.getElementById('enviarid').value =idseleccionado;
     document.getElementById('btnsubmit').click();
 }
