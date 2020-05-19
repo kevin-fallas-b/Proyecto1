@@ -36,18 +36,5 @@ Class Sitio_model extends CI_Model {
         $query = $this->db->query("INSERT INTO `tbl_contacto`(`correo`, `nombre`, `descripcion`) VALUES ('$correo','$nombre','$comentario')");
     }
 
-    //funcion mia para ver si es string, que no sobrepase un maxlength, y que no sea una inyeccion SQL
-    private function validarString($string,$maxlength){
-        $valido = true; //empezamos suponiendo que si es string valido
-
-        if(!is_string($string)){
-            return false;
-        }
-
-        if(strlen($string)>$maxlength){
-            return false;
-        }
-
-        
-    }
+   
 }

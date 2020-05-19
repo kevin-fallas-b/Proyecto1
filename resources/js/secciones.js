@@ -20,6 +20,8 @@ var idservicioseleccionado; //id del servicio qu estyo editando
 var escogerimagen;
 var editandoimagen = false;
 var idimagenseleccionado;
+var imagenesenbd;//lo guardo desde antes para no tener que esperar respuesta del server cuando intento guardar
+var fotosenbd;//array con todas las fotos en bd
 
 function inicial() {
     btneditar = document.getElementById('btneditar');
@@ -30,7 +32,7 @@ function inicial() {
 
     btnnuevo.addEventListener('click', seccionnueva);
     btneditar.addEventListener('click', editar);
-    
+
 }
 
 function getsecciones() {
@@ -93,6 +95,9 @@ function editar() {
                 document.getElementById('eliminarseccion').removeAttribute('hidden');
             } else if (seccionseleccionada['tipo'] == 3) {
                 getservicios();
+            } else if (seccionseleccionada['tipo'] == 2) {
+                //estamos editando galeria, cargar imagenes
+                mostrarimageneseditables();
             }
         }).catch(function (error) {
 
@@ -201,7 +206,7 @@ function getservicios() {
 
 function crearacordiones() {
     contenedoracordiones = document.getElementById('contenedoracordiones')
-    contenedoracordiones.innerHTML ='';
+    contenedoracordiones.innerHTML = '';
     for (var i = 0; i < servicios.length; i++) {
         contenedoracordiones.innerHTML += "<button class='accordion' value=''>" + servicios[i]['nombre'] + " | " + servicios[i]['descripcioncorta'] + " </button>" +
             "<div class='panel'>" +
@@ -242,9 +247,9 @@ function editarservicio(id) {
     document.getElementById('nombreservicionuevo').value = ser['nombre'];
     document.getElementById('desccortaservicionuevo').value = ser['descripcioncorta'];
     document.getElementById('descservicionuevo').value = ser['descripcion'];
-    document.getElementById('btnguardarservicio').value='Editar servicio';
+    document.getElementById('btnguardarservicio').value = 'Editar servicio';
     var nodos = document.getElementsByClassName("accordion");
-    for(var i = 0; i < nodos.length; i++){
+    for (var i = 0; i < nodos.length; i++) {
         nodos[i].classList.add('desabilitado');
     }
 }
@@ -254,10 +259,10 @@ function cancelarservicio() {
     document.getElementById('nombreservicionuevo').value = '';
     document.getElementById('desccortaservicionuevo').value = '';
     document.getElementById('descservicionuevo').value = '';
-    document.getElementById('btnguardarservicio').value='Guardar servicio';
+    document.getElementById('btnguardarservicio').value = 'Guardar servicio';
     editandoservicio = false;
     var nodos = document.getElementsByClassName("accordion");
-    for(var i = 0; i < nodos.length; i++){
+    for (var i = 0; i < nodos.length; i++) {
         nodos[i].classList.remove('desabilitado');
     }
 }
@@ -271,15 +276,15 @@ function agregarservicio() {
         form.append('nombre', nombre);
         form.append('desccorta', desccorta);
         form.append('desc', desc);
-        if(editandoservicio){
-            form.append('id',idservicioseleccionado);
+        if (editandoservicio) {
+            form.append('id', idservicioseleccionado);
         }
         axios.post('admin/setservicio', form)
             .then(function (response) {
                 getservicios();
-                if(editandoservicio){
+                if (editandoservicio) {
                     alertify.success('Se edito el servicio exitosamente!');
-                }else{
+                } else {
                     alertify.success('Se guardo el servicio exitosamente!');
                 }
                 cancelarservicio();
@@ -292,7 +297,7 @@ function agregarservicio() {
     }
 }
 
-function eliminarservicio(id){
+function eliminarservicio(id) {
     alertify.confirm('Eliminar Seccion', '¿Esta seguro que desea eliminar este servicio? Esto no se puede deshacer.', function () {
         //hacer post a eliminar
         var form = new FormData();
@@ -308,36 +313,133 @@ function eliminarservicio(id){
     }, '');
 }
 
-function contarimagenesenbd(){
+function contarimagenesenbd() {
     var form = new FormData();
-    console.log('buscando imagenes');
     axios.post('admin/countimagen', form)
         .then(function (response) {
-            console.log(response.data)
+            imagenesenbd = parseInt(response.data);
         }).catch(function (error) {
 
         });
 }
 
 function clickimagen() {
-    escogerimagen = document.getElementById('escogerimagen');
+    escogerimagen = document.getElementById('escogerimagengaleria');
     escogerimagen.click();
 }
 
-function cancelarimagen(){
+function cancelarimagen() {
     editandoimagen = false;
     document.getElementById('descimagen').value = '';
+    document.getElementById('previewimagenasubir').setAttribute('hidden', true);
+    document.getElementById('btnbuscarfoto').removeAttribute('disabled');
+    document.getElementById('btnguardarimagen').value = 'Agregar imagen';
+    var nodos = document.getElementsByClassName("contfotoedit");
+    for (var i = 0; i < nodos.length; i++) {
+        nodos[i].classList.remove('desabilitado');
+    }
+    
+}
+
+function agregarimagen() {
+    var desc = document.getElementById('descimagen').value;
+
+    if (stringvalido(document.getElementById('descimagen').value, 250)) {
+        if (!editandoimagen) {
+            if (imagenesenbd < 10) {
+                //todo bien, subir imagen
+                var nombreimagen = document.getElementById('escogerimagengaleria').files[0].name.split('.');
+                //como el nombre contiene la extension, lo quitamos con el split
+                console.log(nombreimagen[nombreimagen.length - 2]);
+                document.getElementById('nombfoto').value = nombreimagen[nombreimagen.length - 2];
+                document.getElementById('desc').value = desc;
+                document.getElementById('btnsubmitgaleria').click();
+            } else {
+                alertify.error('La cantidad de imagenes en base de datos ya es la maxima. Debe eliminar alguna para subir una nueva.');
+            }
+        } else {
+            //actualizar, se hace por axios
+            var form = new FormData();
+            form.append('desc',desc);
+            form.append('id', idimagenseleccionado);
+            axios.post('admin/updateimagen', form)
+                .then(function (response) {
+                    mostrarimageneseditables();
+                    alertify.success('Se edito la imagen exitosamente!');
+                    cancelarimagen();
+                }).catch(function (error) {
+
+                });
+        }
+    } else {
+        alertify.error('Por favor revise el campo de descripcion. (maximo 250 caracteres)');
+    }
+
+
 
 }
 
-function agregarimagen(){
-    document.getElementById('enviarid').value = idimagenseleccionado;
+function eliminarimagen(id) {
+    alertify.confirm('Eliminar foto', '¿Esta seguro que desea eliminar esta foto? Esto no se puede deshacer.', function () {
+        //hacer post a eliminar
+        var form = new FormData();
+        form.append('id', id);
+        axios.post('admin/eliminarimagen', form)
+            .then(function (response) {
+                alertify.success('Imagen eliminada correctamente');
+                cancelarimagen();
+                mostrarimageneseditables();
+            }).catch(function (error) {
 
-    document.getElementById('btnsubmit').click();
-    console.log(nombre);
-    //var descripcion = document.getElementById(('descimagen'));
+            });
+    }, '');
 }
 
-function eliminarimagen(){
+function mostrarpreviewimagen(e) {
+    contarimagenesenbd();
+    document.getElementById('previewimagenasubir').removeAttribute('hidden');
+    document.getElementById('previewimagenasubir').src = URL.createObjectURL(e.target.files[0])
+}
 
+function mostrarimageneseditables() {
+
+    var form = new FormData();
+    axios.post('admin/getimagenes', form)
+        .then(function (response) {
+            fotosenbd = response.data;
+            contenedorfotoseditables = document.getElementById('contenedorfotoseditables')
+            contenedorfotoseditables.innerHTML = '';
+            for (var i = 0; i < fotosenbd.length; i++) {
+                contenedorfotoseditables.innerHTML += '<div class="contfotoedit"> <img src="' + getbaseurl() + '/resources/img/galeria/' + fotosenbd[i]['nombre'] + '" alt="" class="imageneditable">' +
+                    '<input type="button" class="boton editar" value="Editar" onclick="editarimagen(' + fotosenbd[i]['id'] + ')">' +
+                    '<input type="button" class="boton eliminar" value="Eliminar" onclick="eliminarimagen(' + fotosenbd[i]['id'] + ')"></input> '+
+                    '<label class="labeldescfotoeditable">Descripcion:</label>'+
+                    '<label class="labelfotoeditable">'+fotosenbd[i]['descripcion']+'</label>'+
+                    '</div><br>'
+
+            }
+        }).catch(function (error) {
+
+        });
+}
+
+
+function editarimagen(id) {
+    editandoimagen = true;
+    idimagenseleccionado = id;
+    for (var i = 0; i < fotosenbd.length; i++) {
+        if (fotosenbd[i]['id'] == idimagenseleccionado) {
+            document.getElementById('previewimagenasubir').removeAttribute('hidden');
+            document.getElementById('previewimagenasubir').src = getbaseurl() + '/resources/img/galeria/' + fotosenbd[i]['nombre'];
+            document.getElementById('descimagen').value = fotosenbd[i]['descripcion'];
+            document.getElementById('btnbuscarfoto').setAttribute('disabled', true);
+            document.getElementById('btnguardarimagen').value = 'Editar imagen';
+            break;
+        }
+    }
+
+    var nodos = document.getElementsByClassName("contfotoedit");
+    for (var i = 0; i < nodos.length; i++) {
+        nodos[i].classList.add('desabilitado');
+    }
 }

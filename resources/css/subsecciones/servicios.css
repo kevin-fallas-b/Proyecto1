@@ -40,13 +40,6 @@
     width: 100%;
 }
 
-.desabilitado{
-    pointer-events: none;
-	opacity: 0.4;
-	border: 1px solid #999999;
-  	background-color: #cccccc;
-	color: #666666;
-}
 
 .btneditarservicio{
     height: 20px;

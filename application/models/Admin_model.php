@@ -74,8 +74,8 @@ class Admin_model extends CI_Model
                 $this->db->query("INSERT INTO `tbl_galeria`(`nombre`,`descripcion`) VALUES ('$nombre','$descripcion')");
         }
 
-        public function update_imagen($id,$nombre,$descripcion){
-                $this->db->query("UPDATE `tbl_galeria` SET `nombre`='$nombre',`descripcion`='$descripcion' WHERE `id`=$id");
+        public function update_imagen($id,$descripcion){
+                $this->db->query("UPDATE `tbl_galeria` SET `descripcion`='$descripcion' WHERE `id`=$id");
         }
 
         public function delete_imagen($id){

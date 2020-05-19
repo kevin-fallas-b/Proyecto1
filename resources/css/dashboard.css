@@ -122,3 +122,9 @@ html, body
 #btnguardar:hover{
     background-color: #007315;
 }
+
+.desabilitado{
+    pointer-events: none;
+	opacity: 0.4;
+	color: #666666;
+}

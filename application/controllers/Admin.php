@@ -71,7 +71,6 @@ class Admin extends CI_Controller
             case 4:
                 echo $devolver;
                 break;
-
         }
     }
 
@@ -140,8 +139,6 @@ class Admin extends CI_Controller
             );
 
             $this->Admin_model->update_banner($this->input->post('enviarid'), $this->upload->data('file_name'));
-
-            //$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
         }
 
         $this->session->set_flashdata('tipo', 'Editar secciones');
@@ -157,17 +154,19 @@ class Admin extends CI_Controller
     {
         if ($this->input->post('id')) {
             //editar
-            $this->Admin_model->update_servicio($this->input->post('id'),$this->input->post('nombre'), $this->input->post('desccorta'), $this->input->post('desc'));
+            $this->Admin_model->update_servicio($this->input->post('id'), $this->input->post('nombre'), $this->input->post('desccorta'), $this->input->post('desc'));
         } else {
             $this->Admin_model->create_servicio($this->input->post('nombre'), $this->input->post('desccorta'), $this->input->post('desc'));
         }
     }
 
-    public function eliminarservicio(){
+    public function eliminarservicio()
+    {
         $this->Admin_model->delete_servicio($this->input->post('id'));
     }
 
-    public function countimagen(){
+    public function countimagen()
+    {
         echo json_encode($this->Admin_model->count_imagen()[0]['cantidad']);
     }
 
@@ -176,7 +175,7 @@ class Admin extends CI_Controller
         $config['upload_path']          = './resources/img/galeria';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 10000; //10MB
-        $config['file_name']           = $this->input->post('enviarid');
+        $config['file_name']           = $this->input->post('nombfoto');
         $config['overwrite']            = true;
         $this->load->library('upload', $config);
 
@@ -190,26 +189,22 @@ class Admin extends CI_Controller
             $params = array(
                 'photo' => $this->upload->data('file_name'),
             );
-            return $this->upload->data('file_name');
-           // $this->Admin_model->update_imagen($this->upload->data('file_name'), $this->input->post('descimagen'));
-
-            //$this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+            $this->Admin_model->create_imagen($this->upload->data('file_name'), $this->input->post('desc'));
         }
-
-        /*$this->session->set_flashdata('tipo', 'Editar secciones');
-        redirect('dashboard', 'refresh');*/
+        $this->session->set_flashdata('tipo', 'Editar secciones');
+        redirect('dashboard', 'refresh');
     }
 
-    public function eliminarimagen(){
+    public function eliminarimagen()
+    {
         $this->Admin_model->delete_imagen($this->input->post('id'));
     }
+    public function getimagenes()
+    {
+        echo json_encode($this->Sitio_model->get_fotos());
+    }
+    public function updateimagen(){
+        $this->Admin_model->update_imagen($this->input->post('id'), $this->input->post('desc'));
 
-    public function agregarimagen(){
-        if($this->input->post('id')){
-            $this->Admin_model->delete_imagen($this->input->post('id'), $this->input->post('nombre'), $this->input->post('descripcion'));
-         }else{
-            $this->Admin_model->delete_imagen($this->input->post('nombre'), $this->input->post('descripcion'));
-         }
-        
     }
 }
